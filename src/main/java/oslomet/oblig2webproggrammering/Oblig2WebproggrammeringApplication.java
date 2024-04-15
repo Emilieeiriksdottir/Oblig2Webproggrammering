@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Oblig2WebproggrammeringApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Oblig2WebproggrammeringApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Oblig2WebproggrammeringApplication.class, args);
+    }
 
 }
