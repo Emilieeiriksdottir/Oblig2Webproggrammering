@@ -1,6 +1,7 @@
 package oslomet.oblig2webproggrammering;
 
 public class Billett {
+    private int id;
     private String filmvalg;
     private int antall;
     private String fornavn;
@@ -8,7 +9,8 @@ public class Billett {
     private String telefon;
     private String epost;
 
-    public Billett(String filmvalg, int antall, String fornavn, String etternavn, String telefon, String epost) {
+    public Billett(int id, String filmvalg, int antall, String fornavn, String etternavn, String telefon, String epost) {
+        this.id = id;
         this.filmvalg = filmvalg;
         this.antall = antall;
         this.fornavn = fornavn;
@@ -17,6 +19,14 @@ public class Billett {
         this.epost=epost;
     }
     public Billett(){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFilmvalg() {
         return filmvalg;

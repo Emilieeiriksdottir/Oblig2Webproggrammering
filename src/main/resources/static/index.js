@@ -1,4 +1,6 @@
-
+$(function(){
+    hentAlle();
+});
 function kjopBillett() {
     const isValid = sjekkInput();
     if (!isValid) {
@@ -29,13 +31,24 @@ function hentAlle(){
     });
 }
 
-function formaterData(innData){
-    let ut = "";
-    innData.forEach(function(billett){
-        ut += "<li>Billett: " +billett.filmvalg +", " + billett.antall+", "+billett.fornavn+", "+
-            billett.etternavn+", "+billett.telefon+", "+billett.epost+"</li>";
-        $("#resultat").html(ut);
-    })
+function formaterData(billetter){
+    let ut = "<table class='table table-striped'>" +
+        "<tr>" +
+        "<th>Filmvalg</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Nummer</th><th>Epost</th><th></th><th></th>" +
+        "</tr>";
+    for (let billett of billetter){
+        ut+="<tr>"+
+            "<td>"+billett.filmvalg+"</td>"+
+            "<td>"+billett.antall+"</td>"+
+            "<td>"+billett.fornavn+"</td>"+
+            "<td>"+billett.etternavn+"</td>"+
+            "<td>"+billett.telefon+"</td>"+
+            "<td>"+billett.epost+"</td>"+
+            "<td> <a class='btn btn-primary' href='endreBillett.html?id="+billett.id+"'>Endre</a> </td>"+
+            "<td> <button class='btn btn-danger' onclick='slettEnBillett("+billett.id+")'>Slett</button></td>"+
+            "</tr>";
+    }
+    $("#resultat").html(ut);
 }
 
 function slettAlle(){
@@ -103,3 +116,10 @@ function sjekkInput() {
     }
     return isValid;
 }
+
+function slettEnBillett(id){
+    const url = "/slettEnBillett?id="+id;
+    $.get(url, function (){
+        window.location.href = "/index.html";
+    })
+};

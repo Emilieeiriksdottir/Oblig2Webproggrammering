@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="endreBillett.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Endre billett</h1>
+    <form class="form">
+        <input type="hidden" id="id"/>
+        <div class="form-group">
+            <label for="filmvalg"></label>
+            <select id="filmvalg" class="form-control">
+                <option>Velg film her</option>
+                <option>Hunger games</option>
+                <option>Dear John</option>
+                <option>Mission impossible</option>
+            </select>
+            <div id="feilFilm" class="error-message"></div>
+            <div class="form-group">
+                <label for="antall">Antall</label>
+                <input type="number" id="antall" class="form-control"  value=""/>
+                <div id="feilAntall" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="fornavn">Fornavn</label>
+                <input type="text" id="fornavn" class="form-control"  value=""/>
+                <div id="feilFornavn" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="etternavn">Etternavn</label>
+                <input type="text" id="etternavn" class="form-control" value=""/>
+                <div id="feilEtternavn" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="telefon">Telefonnummer</label>
+                <input type="text" id="telefon" class="form-control" value=""/>
+                <div id="feilTelefon" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="epost">Epost</label>
+                <input type="text" id="epost" class="form-control" onchange="sjekkEpost()" value=""/>
+                <div id="feilEpost" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <input type="button" value="Endre" class="btn btn-primary" onclick="endreBillett()"/>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
