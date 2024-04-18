@@ -9,6 +9,7 @@
          $("#fornavn").val(billett.fornavn);
          $("#etternavn").val(billett.etternavn);
          $("#telefon").val(billett.telefon);
+         $("#epost").val(billett.epost);
      });
  });
 
