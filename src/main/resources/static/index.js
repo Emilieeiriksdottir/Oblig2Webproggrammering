@@ -1,7 +1,10 @@
+//En start funksjon som kjører hentAlle() funksjonen (som viser alle billetter)
 $(function(){
     hentAlle();
 });
+//funksjon for kjøp billett knappen
 function kjopBillett() {
+    //Hvis alle inputene er valide så blir billett opprettet
     const isValid = sjekkInput();
     if (!isValid) {
         return;
@@ -14,6 +17,7 @@ function kjopBillett() {
         telefon: $("#telefon").val(),
         epost: $("#epost").val()
     };
+    //post som lagrer billetten, og henter alle billetter med hentAlle() funksjonen
     $.post("/lagre", billett, function () {
         hentAlle();
     });
@@ -25,12 +29,14 @@ function kjopBillett() {
     $("#epost").val("");
 }
 
+//en funksjon som henter alle billetter ved bruk av get
 function hentAlle(){
     $.get("/hentAlle", function (billetter){
         formaterData(billetter);
     });
 }
 
+//Formaterings funksjon for billettene, legger også til i hver nye billett en knapp for å endre og slette billetten
 function formaterData(billetter){
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
@@ -48,17 +54,20 @@ function formaterData(billetter){
             "<td> <button class='btn btn-danger' onclick='slettEnBillett("+billett.id+")'>Slett</button></td>"+
             "</tr>";
     }
+    //skriver ut billetten
     $("#resultat").html(ut);
 }
 
+//oppretter en funksjon som sletter alle billetter ved hjelp av get
 function slettAlle(){
     $.get("/slettAlle", function (){
         $("#resultat").empty();
+        //avslutter med å hente alle billetter igjen for å vise at de har blitt slettet
         hentAlle();
     })
 }
 
-
+//funksjon som validerer input feltene og sjekker at de er gyldige
 function sjekkInput() {
     let isValid = true;
 
@@ -117,6 +126,7 @@ function sjekkInput() {
     return isValid;
 }
 
+//funksjon som sletter en billett i billettlisten
 function slettEnBillett(id){
     const url = "/slettEnBillett?id="+id;
     $.get(url, function (){
