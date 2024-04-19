@@ -1,4 +1,5 @@
- $(function (){
+//koden her er inspirert av lærermateriale i canvas
+$(function (){
      //hent billetten med billett-id fra url og vis denne i skjemaet
      const id = window.location.search.substring(1); //returnerer id=1 f.eks
      const url = "/hentEnBillett?"+id;
@@ -12,7 +13,7 @@
          $("#epost").val(billett.epost);
      });
  });
-
+//funksjon for å endre billetten
 function endreBillett(){
     const billett = {
         id : $("#id").val(), // må ha med denne som ikke har blitt endret for å vite hvilken kunde som skal endres
